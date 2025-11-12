@@ -98,15 +98,15 @@ Understand how to validate data both in setter methods and constructors, and how
 
 ### Explanation
 Validation ensures that the data inside an object remains correct and meaningful. When encapsulating data, validation can occur in different stages of an object's lifecycle:
-
- - **Setter** validation ensures only valid data is stored when fields are modified after object creation.
  - **Constructor** validation ensures that objects are created in a valid state from the beginning.
+ - **Setter** validation ensures only valid data is stored when fields are modified after object creation.
 
 ### Example 1: Validation logic in a construcor and setter. Duplication of code. 
 ```java
 public class Student {
     private int age;
-    
+
+    // Constructor with validation logic
     public Student(int age) {
         if (age < 16 || age > 100) {
             System.out.println("Invalid age: must be between 16 and 100");
@@ -114,7 +114,8 @@ public class Student {
         }
         this.age = age;
     }
-    
+
+    // Setter with validation logic
     public void setAge(int age) {
         if (age < 16 || age > 100) {
             System.out.println("Invalid age: must be between 16 and 100");
@@ -182,20 +183,13 @@ Create a `Grade` class that:
    - courseCode (String)
 
 2. Implements these validation helper methods:
-   - validateStudentName(String name)
-   - validateGrade(int grade)
-   - validateCourseCode(String code)
+   - validateStudentName(String name) - Validates that student name is not empty
+   - validateGrade(int grade) - Validates that grades are within range (0-100)
+   - validateCourseCode(String code) - Validates that course code matches pattern (e.g., "CS101")
 
 3. Uses the helpers in both:
    - Constructor
    - Setter methods
-
-4. Implements these features:
-   - Validates that grades are within range (0-100)
-   - Validates that student name is not empty
-   - Validates that course code matches pattern (e.g., "CS101")
-   - Provides a method to get the letter grade (A: 90-100, B: 80-89, etc.)
-   - Throws appropriate exceptions with meaningful messages for invalid input
 
 Example structure:
 ```java
@@ -210,17 +204,14 @@ public class Grade {
 
     // TODO: Add validation helper methods
 
-    // TODO: Add method to calculate letter grade
 }
 ```
 
 ## Summary
 This lab covered the essential concepts of encapsulation in Java:
-1. Basic data hiding using private fields
+1. Data hiding using private fields
 2. Controlled access through getters and setters
 3. Data validation for maintaining integrity
-4. Proper initialization with constructors
-
 
 ## Further Reading
 - Java Documentation: [Access Control](https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html)
