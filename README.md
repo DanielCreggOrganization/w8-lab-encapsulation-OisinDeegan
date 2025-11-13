@@ -176,6 +176,16 @@ Create a `SecretMessage` class that:
 - Try and call the message field directly using the dot operator (you should get a compilation error)
 - Print the message to the console using the public method
 
+**Expected Output:**
+```
+The secret message is: Hello, Encapsulation!
+```
+
+**Expected Compilation Error (when trying to access the private field):**
+```
+error: message has private access in SecretMessage
+```
+
 ## 4. Getters and Setters
 
 ### Learning Objective
@@ -223,6 +233,18 @@ Test your class in the `Main` method by:
 - Setting a temperature value using the setter
 - Reading the temperature value using the getter
 - Printing the result to the console
+
+**Expected Output:**
+```
+Temperature: 25.0°C
+```
+
+**Example Test Code:**
+```java
+Temperature temp = new Temperature();
+temp.setCelsius(25.0);
+System.out.println("Temperature: " + temp.getCelsius() + "°C");
+```
 
 ## 5. Data Validation
 
@@ -352,6 +374,55 @@ Test your `Grade` class in `Main` by:
 - Creating an invalid `Grade` object (with a grade of 150)
 - Using setters to try setting invalid values
 - Using getters to display the current state
+
+**Expected Output:**
+```
+=== Valid Grade ===
+Student: John Doe
+Grade: 85
+Course: CS101
+
+=== Invalid Grade (150) ===
+Invalid grade: must be between 0 and 100. Grade set to 0.
+Student: Jane Smith
+Grade: 0
+Course: MATH201
+
+=== Testing Invalid Setters ===
+Invalid student name: cannot be empty. Name set to "Unknown".
+Invalid grade: must be between 0 and 100. Grade set to 0.
+Invalid course code format. Code set to "UNKNOWN".
+Student: Unknown
+Grade: 0
+Course: UNKNOWN
+```
+
+**Example Test Code:**
+```java
+// Valid grade
+Grade grade1 = new Grade("John Doe", 85, "CS101");
+System.out.println("=== Valid Grade ===");
+System.out.println("Student: " + grade1.getStudentName());
+System.out.println("Grade: " + grade1.getNumericGrade());
+System.out.println("Course: " + grade1.getCourseCode());
+
+// Invalid grade (150)
+System.out.println("\n=== Invalid Grade (150) ===");
+Grade grade2 = new Grade("Jane Smith", 150, "MATH201");
+System.out.println("Student: " + grade2.getStudentName());
+System.out.println("Grade: " + grade2.getNumericGrade());
+System.out.println("Course: " + grade2.getCourseCode());
+
+// Testing invalid setters
+System.out.println("\n=== Testing Invalid Setters ===");
+Grade grade3 = new Grade("Bob Jones", 75, "ENG202");
+grade3.setStudentName("");
+grade3.setNumericGrade(-50);
+grade3.setCourseCode("INVALID");
+System.out.println("Student: " + grade3.getStudentName());
+System.out.println("Grade: " + grade3.getNumericGrade());
+System.out.println("Course: " + grade3.getCourseCode());
+```
 
 ## Summary
 This lab covered the essential concepts of encapsulation in Java:
